@@ -24,11 +24,11 @@ android-debug:
   - gradle --no-daemon -g ../cache wrapper -b build-wrapper.gradle
   - ./gradlew --no-daemon -g ../cache assembleDebug
   - cd ..
-  - mv app/build/outputs/apk/debug/android-debug.apk DeBierApp.apk
+  - mv app/build/outputs/apk/debug/app-debug.apk app.apk
   artifacts:
     expire_in: 1 month
     paths:
-    - DeBierApp.apk
+    - app.apk
 
 unit_tests:
   stage: test
