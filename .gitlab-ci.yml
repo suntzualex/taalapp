@@ -1,0 +1,48 @@
+stages:
+- build
+- test
+- deploy
+
+variables:
+  DOCKER_DRIVER: overlay # faster docker builds, see https://gitlab.com/gitlab-org/gitlab-ce/issues/21374
+  GIT_DEPTH: "16"
+  GIT_STRATEGY: fetch
+  GIT_SUBMODULE_STRATEGY: recursive
+
+cache:
+  key: "global"
+  paths:
+  - cache/
+
+android-debug:
+  stage: build
+  tags:
+  - docker
+  image: ouapplab/android
+  script:
+  - cd android
+  - gradle --no-daemon -g ../cache wrapper -b build-wrapper.gradle
+  - ./gradlew --no-daemon -g ../cache assembleDebug
+  - cd ..
+  - mv android/build/outputs/apk/debug/android-debug.apk DeBierApp.apk
+  artifacts:
+    expire_in: 1 month
+    paths:
+    - DeBierApp.apk
+
+unit_tests:
+  stage: test
+  tags:
+  - docker
+  image: ouapplab/android
+  script:
+  - cd android
+  - gradle --no-daemon -g ../cache wrapper -b build-wrapper.gradle
+  - ./gradlew --no-daemon -g ../cache test
+  artifacts:
+    name: "reports_${CI_PROJECT_NAME}_${CI_BUILD_REF_NAME}"
+    when: on_failure
+    expire_in: 4 days
+    paths:
+      - android/build/reports/tests/
+
