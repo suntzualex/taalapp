@@ -20,11 +20,11 @@ android-debug:
   - docker
   image: ouapplab/android
   script:
-  - cd android
+  - cd app
   - gradle --no-daemon -g ../cache wrapper -b build-wrapper.gradle
   - ./gradlew --no-daemon -g ../cache assembleDebug
   - cd ..
-  - mv android/build/outputs/apk/debug/android-debug.apk DeBierApp.apk
+  - mv app/build/outputs/apk/debug/android-debug.apk DeBierApp.apk
   artifacts:
     expire_in: 1 month
     paths:
@@ -36,7 +36,7 @@ unit_tests:
   - docker
   image: ouapplab/android
   script:
-  - cd android
+  - cd app
   - gradle --no-daemon -g ../cache wrapper -b build-wrapper.gradle
   - ./gradlew --no-daemon -g ../cache test
   artifacts:
@@ -44,5 +44,5 @@ unit_tests:
     when: on_failure
     expire_in: 4 days
     paths:
-      - android/build/reports/tests/
+      - app/build/reports/tests/
 
