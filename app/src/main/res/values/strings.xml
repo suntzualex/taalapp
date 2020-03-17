@@ -1,9 +1,9 @@
 <resources>
-    <string name="app_name">AppLabDemo</string>
+    <string name="app_name">TaalApp</string>
 
     <string name="auto_update_url" translatable="false">http://open.ou.nl</string>
 
-    <string name="tutorial_welcome_description">The sky is the limit.</string>
+    <string name="tutorial_welcome_description">Maakt talen leren eenvoudig.</string>
     <string name="tutorial_welcome_title"></string>
     <string name="title_activity_settings">Settings</string>
 
