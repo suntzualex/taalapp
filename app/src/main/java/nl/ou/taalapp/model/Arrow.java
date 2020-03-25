@@ -1,5 +1,8 @@
 package nl.ou.taalapp.model;
 
+/**
+ * Add documentation
+ */
 public class Arrow {
 
     private long arrowId;
