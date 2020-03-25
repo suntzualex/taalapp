@@ -8,6 +8,7 @@ public class WordMap {
     private long wordMapID;
     private String name;
     private long owner;
+    /* The Long type can be replaced by a class ID  */
     private Map<Long, Card> cards;
     private Map<Long, Arrow> arrows;
 
