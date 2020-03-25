@@ -2,7 +2,7 @@ package nl.ou.taalapp.model;
 
 import java.util.Map;
 
-public class WorldMap {
+public class WordMap {
 
     /* worldMapID can be replaced with another type: like ID type */
     private long wordMapID;
@@ -11,7 +11,7 @@ public class WorldMap {
     private Map<Long, Card> cards;
     private Map<Long, Arrow> arrows;
 
-    public WorldMap() {
+    public WordMap() {
 
     }
 
